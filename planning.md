@@ -4,10 +4,7 @@ We’ll have the apartment buildings be represented as a graph with each neighbo
 
 We’re going to determine the minimum number of routers needed so every apartment has access to WiFi.
 
-          Input
-
-          We’ll set the apartments as a dictionary. Each dictionary key represents an
-          apartment with its connected list containing its neighbors.
+          Input: A dictionary that maps an apartment (the key) to a list of its neighbors (the value). 
 
 
           Ex. 
