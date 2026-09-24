@@ -128,6 +128,43 @@ Baseline Purpose
 
 The greedy algorithm provides a reference point for: running time, number of routers selected, and behavior on different graph structures. The exact algorithm can then be compared against the greedy algorithm to determine how often the greedy strategy finds the optimal number of routers.
 
+from itertools import combinations
+
+def min_routers(graph):
+    """
+    Finds the minimum number of router locations needed to cover every apartment.
+    
+    graph: dictionary where each key is an apartment and each value is a list
+           of that apartment's neighbors.
+    
+    Returns: a list of apartments where routers should be placed.
+    """
+
+    # Ensure every neighbor is also a key in the dictionary
+    for apartment, neighbors in list(graph.items()):
+        for neighbor in neighbors:
+            if neighbor not in graph:
+                graph[neighbor] = []
+
+    apartments = list(graph.keys())
+
+    def covers(router_locations):
+        covered = set()
+        for apt in router_locations:
+            covered.add(apt)
+            for neighbor in graph.get(apt, []):
+                covered.add(neighbor)
+        return covered
+
+    all_apartments = set(apartments)
+
+    # Try all possible subset sizes from smallest to largest
+    for size in range(len(apartments) + 1):
+        for subset in combinations(apartments, size):
+            if covers(subset) == all_apartments:
+                return list(subset)
+
+    return []
 
 COMPLEXITY ANALYSIS
 
