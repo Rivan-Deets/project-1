@@ -8,7 +8,7 @@ file contains:
 """
 
 
-def baseline_router(required_rooms):
+def baseline_routers(required_rooms):
     """
     Baseline solution that places a router in every room that requires WiFi
 
@@ -24,7 +24,7 @@ def baseline_router(required_rooms):
     return required_rooms.copy()
 
 
-def greedy_router(required_rooms, N):
+def greedy_routers(required_rooms, N):
     """
     Greedy solution
 
